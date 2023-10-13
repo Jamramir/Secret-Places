@@ -5,76 +5,115 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shirt Selling Website</title>
     <style>
+        /* Your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
         header {
-            text-align: center;
-            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #f2f2f2;
         }
 
         header img {
-            width: 150px; /* Adjust the width according to your needs */
+            width: 100px;
         }
 
-        nav {
-            margin-top: 20px;
+        .nav-links {
+            display: flex;
+            gap: 20px;
         }
 
-        nav ul {
-            list-style-type: none;
-            padding: 0;
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
         }
 
-        nav ul li {
-            display: inline;
-            margin: 0 10px;
-        }
-
-        .product {
-            border: 1px solid #ccc;
+        .cart-content {
+            position: absolute;
+            top: 30px;
+            right: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
             padding: 10px;
-            margin: 10px;
-            width: 200px;
-            display: inline-block;
-            vertical-align: top;
+            display: none;
+            max-width: 200px;
         }
 
-        .product img {
-            width: 100%;
-            height: auto;
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .cart-item-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .remove-button {
+            margin-left: auto;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
     <header>
         <img src="New Project.jpg" alt="Website Logo">
-        <nav>
-            <ul>
-                <li><a href="#products">Products</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-        </nav>
+        <div class="nav-links">
+            <a href="products.html">Products</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="cart-icon" onclick="toggleCart()">
+            🛒 Cart
+            <div class="cart-content" id="cartContent">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+        </div>
     </header>
 
-    <section id="products" style="text-align: center;">
-        <h2>Our Products</h2>
-        <div class="product">
-            <img src="shirt1.jpg" alt="Shirt 1">
-            <h3>Shirt 1</h3>
-            <p>Description of the shirt. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <p>Price: $20.00</p>
-            <button>Add to Cart</button>
-        </div>
+    <!-- Product items and other content -->
 
-        <div class="product">
-            <img src="shirt2.jpg" alt="Shirt 2">
-            <h3>Shirt 2</h3>
-            <p>Description of the shirt. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <p>Price: $25.00</p>
-            <button>Add to Cart</button>
-        </div>
-    </section>
+    <script>
+        // Add your JavaScript functions here
 
-    <!-- The rest of your HTML content remains unchanged -->
+        // Function to toggle the cart visibility
+        function toggleCart() {
+            const cartContent = document.getElementById('cartContent');
+            cartContent.style.display = cartContent.style.display === 'block' ? 'none' : 'block';
+        }
 
+        // Function to add items to the cart
+        function addToCart(item, price, image) {
+            cart.push({ item, price, image });
+            updateCart();
+        }
+
+        // Function to remove items from the cart
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        // Function to update the cart content dynamically
+        function updateCart() {
+            const cartContent = document.getElementById('cartContent');
+            cartContent.innerHTML = '';
+            cart.forEach((item, index) => {
+                // Create elements for each cart item and append them to the cartContent
+                // Use the item details to populate these elements
+            });
+        }
+    </script>
 </body>
 </html>
